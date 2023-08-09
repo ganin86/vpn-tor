@@ -1,0 +1,18 @@
+VirtualAddrNetworkIPv4 10.192.0.0/10
+AutomapHostsOnResolve 1
+
+SocksPort 127.0.0.1:9050 IsolateClientAddr IsolateClientProtocol IsolateDestAddr IsolateDestPort
+TransPort 127.0.0.1:9040 IsolateClientAddr IsolateClientProtocol IsolateDestAddr IsolateDestPort
+TransPort 10.8.0.1:9040 IsolateClientAddr IsolateClientProtocol IsolateDestAddr IsolateDestPort
+DNSPort 10.8.0.1:53
+DNSPort 127.0.0.1:5353
+#VirtualAddrNetworkIPv4 172.16.0.0/12
+
+SocksPolicy accept 127.0.0.1/24
+SocksPolicy accept 10.8.0.0/24
+SocksPolicy reject *
+
+Log notice file /var/log/tor/notices.log
+#RunAsDaemon 1
+Nickname newc1omp
+ExitPolicy reject *:* # no exits allowed
